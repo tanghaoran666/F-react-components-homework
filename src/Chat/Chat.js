@@ -35,10 +35,12 @@ class Chat extends Component {
     const prevState = this.state;
     let messages = prevState.messages.concat(customer);
     answersData.forEach((answer) => {
-      answer.tags.forEach((tag) => {
+      answer.tags.every((tag) => {
         if (message.includes(tag)) {
           messages = messages.concat(answer);
+          return false;
         }
+        return true;
       });
     });
 
